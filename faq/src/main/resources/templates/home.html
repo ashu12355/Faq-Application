@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Application</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="/js/home.js" defer></script>
+</head>
+
+<body>
+
+    <main>
+        <header data-th-object="${heading}">
+            <h2 data-th-text="*{title}"></h2>
+            <p data-th-text="*{subTitle}"></p>
+        </header>
+        <section>
+            <div data-th-each="data ,k : ${questions }" class="faq" data-th-object="${data}">
+
+
+                <div data-th-if="${k.count} == 1">
+                    <div class="question-area">
+                        <h4 data-th-text="|${k.count}. *{question}|"></h4>
+                        <button class="expand-button">-</button>
+                    </div>
+                    <p data-th-text="*{answer}" class="answer"></p>
+                </div>
+
+                <div data-th-if="${k.count} !=1">
+                    <div class="question-area">
+                        <h4 data-th-text="|${k.count}. *{question}|"></h4>
+                        <button class="expand-button">+</button>
+                    </div>
+                    <p data-th-text="*{answer}" class="answer hide"></p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
